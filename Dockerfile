@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 ubuntu:22.04
+FROM ubuntu:22.04
 
 ARG ANSIBLE_CORE_VERSION_ARG=6.3.0
 ARG ANSIBLE_LINT=6.5.1
@@ -13,7 +13,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
 RUN python3 -m pip install --upgrade pip cffi && \
     pip install ansible==${ANSIBLE_CORE} && \
     pip install ansible-lint==${ANSIBLE_LINT} && \
-    pip install --upgrade pywinrm && \
+    pip install boto3 && \
+    pip install botocore && \
     rm -rf /root/.cache/pip
 
 RUN mkdir /ansible && \
