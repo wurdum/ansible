@@ -6,7 +6,10 @@ This image allows you to run Ansible from a container.
 # Build
 
 ```bash
-docker build -t ansible:1.0.0 .
+# If you don't have a builder.
+docker buildx create --use
+
+docker buildx build --tag wurdum/ansible:latest --tag wurdum/ansible:1.0.0 --platform linux/amd64,linux/arm64 .
 ```
 
 
